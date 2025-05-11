@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Campus News</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>📢 College News</h1>
+
+  <div id="newsBox" style="margin-bottom: 30px;"></div>
+
+  <!-- Admin Button -->
+  <a href="admin.html">
+    <button style="background-color: #333; color: #fff; padding: 10px 20px; border: none;">
+      Go to Admin Login
+    </button>
+  </a>
+
+  <script src="script.js"></script>
+  <script>
+    // Show latest message
+    document.getElementById('newsBox').innerText = localStorage.getItem('latestNews') || "No news posted yet.";
+  </script>
+</body>
+</html>

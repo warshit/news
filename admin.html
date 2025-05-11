@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🔒 Admin Login</h1>
+  <div id="loginBox">
+    <input type="password" id="password" placeholder="Enter Admin Password" />
+    <button onclick="checkLogin()">Login</button>
+  </div>
+
+  <div id="editorBox" style="display:none;">
+    <textarea id="newsInput" placeholder="Enter latest news..."></textarea>
+    <button onclick="saveNews()">Post News</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
