@@ -7,9 +7,9 @@
 <body>
   <h1>📢 College News</h1>
 
-  Here we updated news
   <div id="newsBox" style="margin-bottom: 30px;">
-</div>
+    <ul id="newsList"></ul>
+  </div>
 
   <!-- Admin Button -->
   <a href="admin.html">
@@ -18,10 +18,36 @@
     </button>
   </a>
 
-  <script src="script.js"></script>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
   <script>
-    // Show latest message
-    document.getElementById('newsBox').innerText = localStorage.getItem('latestNews') || "No news posted yet.";
+    const firebaseConfig = {
+      apiKey: "AIzaSyDesRy-ebDltNQ7KC_GX-5qJ9Hxz3rBjEM",
+      authDomain: "news-iare.firebaseapp.com",
+      databaseURL: "https://news-iare-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "news-iare",
+      storageBucket: "news-iare.firebasestorage.app",
+      messagingSenderId: "812638645782",
+      appId: "1:812638645782:web:9ddd689f2813d15f210f37",
+      measurementId: "G-BSVB2CN3V0"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const newsList = document.getElementById("newsList");
+
+    db.ref("news").on("value", (snapshot) => {
+      const data = snapshot.val();
+      newsList.innerHTML = "";
+      for (let id in data) {
+        const li = document.createElement("li");
+        li.textContent = data[id].title;
+        newsList.appendChild(li);
+      }
+    });
   </script>
 </body>
 </html>
